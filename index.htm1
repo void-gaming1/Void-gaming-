@@ -1,471 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VOID GAMING</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOID GAMING</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,sans-serif;
+  background:#050713;
+  color:#fff;
+  line-height:1.5;
+}
+a{text-decoration:none;color:inherit}
 
-    body {
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, #182044 0%, #080b16 45%, #03040a 100%);
-      color: white;
-      min-height: 100vh;
-    }
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(5,7,19,.96);
+  border-bottom:1px solid #25294b;
+}
 
-    header {
-      padding: 22px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: rgba(3,4,10,.75);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
+.logo{
+  font-size:23px;
+  font-weight:900;
+  color:#a855f7;
+}
 
-    .logo span {
-      color: #7c5cff;
-    }
+.logo span{color:#fff}
 
-    nav a {
-      color: #cbd0e8;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 14px;
-    }
+.links{
+  display:flex;
+  gap:20px;
+  color:#c6c8da;
+  font-size:14px;
+}
 
-    nav a:hover {
-      color: white;
-    }
+.links a:hover{color:#c084fc}
 
-    .hero {
-      text-align: center;
-      padding: 85px 20px 55px;
-    }
+.button{
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:9px;
+  background:linear-gradient(135deg,#7c3aed,#c026ff);
+  color:white;
+  font-weight:bold;
+  border:0;
+  cursor:pointer;
+}
 
-    .badge {
-      display: inline-block;
-      padding: 8px 14px;
-      border: 1px solid rgba(124,92,255,.4);
-      border-radius: 30px;
-      color: #b9adff;
-      background: rgba(124,92,255,.1);
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
+.hero{
+  min-height:570px;
+  display:flex;
+  align-items:center;
+  padding:80px 7%;
+  background:
+    radial-gradient(circle at 75% 35%,rgba(124,58,237,.45),transparent 30%),
+    radial-gradient(circle at 20% 80%,rgba(192,38,255,.18),transparent 30%),
+    linear-gradient(135deg,#070a18,#120629,#050713);
+}
 
-    .hero h1 {
-      font-size: clamp(45px, 9vw, 85px);
-      font-weight: 1000;
-      letter-spacing: -3px;
-    }
+.hero-content{max-width:720px}
 
-    .hero h1 span {
-      color: #7c5cff;
-      text-shadow: 0 0 30px rgba(124,92,255,.5);
-    }
+.kicker{
+  color:#c084fc;
+  letter-spacing:5px;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
 
-    .hero p {
-      max-width: 650px;
-      margin: 20px auto;
-      color: #aab0c8;
-      line-height: 1.7;
-    }
+h1{
+  font-size:clamp(55px,9vw,100px);
+  line-height:.9;
+  margin-bottom:25px;
+  font-style:italic;
+}
 
-    .buttons {
-      margin-top: 28px;
-    }
+h1 span{
+  color:#a855f7;
+  text-shadow:0 0 30px #8b5cf6;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 13px 22px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 5px;
-      background: #7c5cff;
-      color: white;
-      box-shadow: 0 0 25px rgba(124,92,255,.25);
-    }
+.hero p{
+  color:#c7c9da;
+  max-width:650px;
+  font-size:17px;
+  margin-bottom:28px;
+}
 
-    .btn.secondary {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-    }
+.buttons{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
 
-    .container {
-      width: 86%;
-      max-width: 1150px;
-      margin: auto;
-    }
+.secondary{
+  display:inline-block;
+  border:1px solid #7c3aed;
+  padding:12px 20px;
+  border-radius:9px;
+  font-weight:bold;
+}
 
-    .section {
-      padding: 35px 0;
-    }
+.tagline{
+  margin-top:28px;
+  color:#b86cff;
+  letter-spacing:3px;
+  font-size:12px;
+}
 
-    .section-title {
-      font-size: 27px;
-      margin-bottom: 20px;
-    }
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:55px 20px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-    }
+.section-title{
+  font-size:30px;
+  margin-bottom:22px;
+}
 
-    .card {
-      background: rgba(255,255,255,.045);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 17px;
-      padding: 22px;
-      box-shadow: 0 15px 40px rgba(0,0,0,.2);
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:16px;
+}
 
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(124,92,255,.35);
-      transition: .2s;
-    }
+.card{
+  background:linear-gradient(145deg,#0b1022,#080b18);
+  border:1px solid #26305a;
+  border-radius:14px;
+  padding:25px 18px;
+  text-align:center;
+  transition:.25s;
+}
 
-    .server {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#a855f7;
+  box-shadow:0 0 25px rgba(168,85,247,.18);
+}
 
-    .online {
-      color: #53e08b;
-      font-size: 13px;
-      font-weight: bold;
-    }
+.icon{
+  font-size:40px;
+  margin-bottom:12px;
+}
 
-    .dot {
-      display: inline-block;
-      width: 9px;
-      height: 9px;
-      background: #53e08b;
-      border-radius: 50%;
-      margin-right: 6px;
-      box-shadow: 0 0 12px #53e08b;
-    }
+.card h3{margin-bottom:8px}
+.card p{color:#9ea5c2;font-size:13px}
 
-    .big {
-      font-size: 29px;
-      font-weight: 900;
-      margin-top: 12px;
-    }
+.dashboard{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:18px;
+}
 
-    .muted {
-      color: #8f96b0;
-      font-size: 13px;
-      margin-top: 6px;
-    }
+.panel{
+  background:#090e1e;
+  border:1px solid #26305a;
+  border-radius:14px;
+  padding:22px;
+}
 
-    .player {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-    }
+.panel h2{
+  margin-bottom:18px;
+  font-size:20px;
+}
 
-    .avatar {
-      width: 43px;
-      height: 43px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg,#7c5cff,#2c9cff);
-      font-weight: 900;
-    }
+.server-box{
+  padding:15px;
+  background:#0d1428;
+  border-radius:10px;
+  margin-bottom:14px;
+}
 
-    .rank {
-      margin-left: auto;
-      color: #a99cff;
-      font-weight: bold;
-    }
+.server-box p{
+  color:#aab1ca;
+  margin:7px 0;
+}
 
-    .stat-number {
-      font-size: 34px;
-      font-weight: 900;
-    }
+.online{
+  color:#22c55e;
+  font-weight:bold;
+}
 
-    .lifesteal {
-      background:
-        linear-gradient(135deg, rgba(124,92,255,.17), rgba(20,24,50,.5));
-    }
+.ip{
+  color:#c084fc;
+  font-weight:bold;
+  word-break:break-all;
+}
 
-    .heart {
-      color: #ff4d72;
-    }
+.join{
+  display:block;
+  text-align:center;
+  margin-top:15px;
+}
 
-    .bar {
-      height: 8px;
-      background: rgba(255,255,255,.08);
-      border-radius: 20px;
-      margin-top: 14px;
-      overflow: hidden;
-    }
+input{
+  width:100%;
+  padding:13px;
+  background:#050817;
+  border:1px solid #30385d;
+  border-radius:8px;
+  color:white;
+  margin-bottom:12px;
+  outline:none;
+}
 
-    .bar span {
-      display: block;
-      height: 100%;
-      width: 76%;
-      background: #7c5cff;
-      border-radius: 20px;
-    }
+input:focus{border-color:#a855f7}
 
-    footer {
-      text-align: center;
-      padding: 45px 20px;
-      color: #737991;
-      font-size: 13px;
-    }
+.stat{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+  border-bottom:1px solid #202744;
+}
 
-    @media(max-width:600px) {
-      nav {
-        display: none;
-      }
+.stat span:last-child{
+  color:#c084fc;
+  font-weight:bold;
+}
 
-      .hero {
-        padding-top: 60px;
-      }
-    }
-  </style>
+.player{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
+  border-bottom:1px solid #202744;
+}
+
+.rank{
+  color:#facc15;
+  font-weight:bold;
+}
+
+.small{
+  color:#8f96b3;
+  font-size:12px;
+}
+
+.cta{
+  margin:20px;
+  padding:50px 25px;
+  text-align:center;
+  border:1px solid #7c3aed;
+  border-radius:18px;
+  background:radial-gradient(circle,#26104c,#090b18);
+}
+
+.cta h2{
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+.cta p{
+  color:#aeb4ca;
+  margin-bottom:22px;
+}
+
+footer{
+  text-align:center;
+  padding:35px 20px;
+  color:#777f9d;
+  border-top:1px solid #202744;
+}
+
+footer strong{color:#a855f7}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .dashboard{grid-template-columns:1fr}
+  .links{display:none}
+}
+
+@media(max-width:500px){
+  .grid{grid-template-columns:1fr}
+  .hero{padding:65px 22px}
+  h1{font-size:58px}
+  .hero p{font-size:15px}
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">VOID<span>GAMING</span></div>
+<div class="nav">
 
-  <nav>
-    <a href="#server">Server</a>
-    <a href="#leaderboard">Leaderboard</a>
-    <a href="#stats">Stats</a>
-    <a href="#lifesteal">Lifesteal</a>
-  </nav>
+<div class="logo">
+VOID <span>GAMING</span>
+</div>
+
+<div class="links">
+<a href="#home">Home</a>
+<a href="#games">Games</a>
+<a href="#stats">Stats</a>
+<a href="#leaderboard">Leaderboard</a>
+<a href="#server">Server</a>
+</div>
+
+<a class="button" href="#community">Join Now</a>
+
+</div>
 </header>
 
-<section class="hero">
-  <div class="badge">⚡ THE ULTIMATE GAMING HUB</div>
 
-  <h1>ENTER THE <span>VOID</span></h1>
+<section class="hero" id="home">
 
-  <p>
-    Welcome to VOID GAMING — your home for Minecraft,
-    Lifesteal SMP, leaderboards, player stats and achievements.
-  </p>
+<div class="hero-content">
 
-  <div class="buttons">
-    <a class="btn" href="#server">🎮 Explore Server</a>
-    <a class="btn secondary" href="#leaderboard">🏆 Leaderboard</a>
-  </div>
+<div class="kicker">WELCOME TO</div>
+
+<h1>
+VOID <span>GAMING</span>
+</h1>
+
+<p>
+The ultimate gaming hub for Minecraft, Lifesteal SMP,
+leaderboards, player stats, achievements and community.
+</p>
+
+<div class="buttons">
+<a class="button" href="#server">🎮 PLAY NOW</a>
+<a class="secondary" href="#community">💬 JOIN COMMUNITY</a>
+</div>
+
+<div class="tagline">
+PLAY • COMPETE • ACHIEVE • BE LEGENDARY
+</div>
+
+</div>
 </section>
 
-<main class="container">
 
-  <section class="section" id="server">
-    <h2 class="section-title">🟢 Server Status</h2>
+<section class="container" id="games">
 
-    <div class="grid">
+<h2 class="section-title">🎮 Gaming Hub</h2>
 
-      <div class="card">
-        <div class="server">
-          <strong>VOID Lifesteal SMP</strong>
-          <span class="online">
-            <span class="dot"></span>ONLINE
-          </span>
-        </div>
+<div class="grid">
 
-        <div class="big">247 Players</div>
-        <div class="muted">Server status • Demo data</div>
+<div class="card">
+<div class="icon">⛏️</div>
+<h3>Minecraft</h3>
+<p>Build, explore and survive.</p>
+</div>
 
-        <div class="bar">
-          <span></span>
-        </div>
-      </div>
+<div class="card">
+<div class="icon">❤️</div>
+<h3>Lifesteal SMP</h3>
+<p>Fight and collect hearts.</p>
+</div>
 
-      <div class="card">
-        <div class="muted">SERVER IP</div>
-        <div class="big" style="font-size:22px;">
-          play.voidgaming.net
-        </div>
-        <div class="muted">Minecraft Bedrock / Java</div>
-      </div>
+<div class="card">
+<div class="icon">🏆</div>
+<h3>Leaderboards</h3>
+<p>Compete for the top.</p>
+</div>
 
-      <div class="card">
-        <div class="muted">VERSION</div>
-        <div class="big">1.21+</div>
-        <div class="muted">Survival • PvP • Lifesteal</div>
-      </div>
+<div class="card">
+<div class="icon">👤</div>
+<h3>Player Stats</h3>
+<p>Track your progress.</p>
+</div>
 
-    </div>
-  </section>
+<div class="card">
+<div class="icon">👥</div>
+<h3>Community</h3>
+<p>Meet other gamers.</p>
+</div>
 
-  <section class="section" id="lifesteal">
-    <h2 class="section-title">❤️ Lifesteal SMP</h2>
+</div>
+</section>
 
-    <div class="grid">
 
-      <div class="card lifesteal">
-        <div class="muted">YOUR HEARTS</div>
-        <div class="big heart">30 ❤️</div>
-        <div class="muted">Demo player profile</div>
-      </div>
+<section class="container" id="server">
 
-      <div class="card lifesteal">
-        <div class="muted">TOTAL PLAYERS</div>
-        <div class="stat-number">8,492</div>
-        <div class="muted">Players registered</div>
-      </div>
+<h2 class="section-title">⚡ Server Dashboard</h2>
 
-      <div class="card lifesteal">
-        <div class="muted">BATTLES TODAY</div>
-        <div class="stat-number">1,284</div>
-        <div class="muted">PvP battles</div>
-      </div>
+<div class="dashboard">
 
-    </div>
-  </section>
+<div class="panel">
 
-  <section class="section" id="leaderboard">
-    <h2 class="section-title">🏆 Top Players</h2>
+<h2>🟢 Server Status</h2>
 
-    <div class="grid">
+<div class="server-box">
+<p>Status: <span class="online">ONLINE</span></p>
+<p>Server: <span class="ip">play.voidgaming.net</span></p>
+<p>Mode: Lifesteal SMP</p>
+<p>Players: 128 / 500</p>
+</div>
 
-      <div class="card">
-        <div class="player">
-          <div class="avatar">1</div>
-          <div>
-            <strong>VoidKing</strong>
-            <div class="muted">2,840 kills</div>
-          </div>
-          <div class="rank">#1</div>
-        </div>
-      </div>
+<a class="button join" href="#community">
+JOIN SERVER
+</a>
 
-      <div class="card">
-        <div class="player">
-          <div class="avatar">2</div>
-          <div>
-            <strong>ShadowX</strong>
-            <div class="muted">2,431 kills</div>
-          </div>
-          <div class="rank">#2</div>
-        </div>
-      </div>
+</div>
 
-      <div class="card">
-        <div class="player">
-          <div class="avatar">3</div>
-          <div>
-            <strong>NightWolf</strong>
-            <div class="muted">2,105 kills</div>
-          </div>
-          <div class="rank">#3</div>
-        </div>
-      </div>
 
-      <div class="card">
-        <div class="player">
-          <div class="avatar">4</div>
-          <div>
-            <strong>ProMiner</strong>
-            <div class="muted">1,982 kills</div>
-          </div>
-          <div class="rank">#4</div>
-        </div>
-      </div>
+<div class="panel" id="stats">
 
-    </div>
-  </section>
+<h2>👤 Player Stats</h2>
 
-  <section class="section" id="stats">
-    <h2 class="section-title">📊 Player Stats</h2>
+<input
+id="playerInput"
+type="text"
+placeholder="Enter player name..."
+>
 
-    <div class="grid">
+<button class="button" onclick="showStats()">
+SEARCH
+</button>
 
-      <div class="card">
-        <div class="muted">TOTAL KILLS</div>
-        <div class="stat-number">2,840</div>
-      </div>
+<div id="statsResult" style="margin-top:15px">
 
-      <div class="card">
-        <div class="muted">DEATHS</div>
-        <div class="stat-number">317</div>
-      </div>
+<div class="stat">
+<span>Hearts</span>
+<span>30 ❤️</span>
+</div>
 
-      <div class="card">
-        <div class="muted">K/D RATIO</div>
-        <div class="stat-number">8.96</div>
-      </div>
+<div class="stat">
+<span>Kills</span>
+<span>245</span>
+</div>
 
-      <div class="card">
-        <div class="muted">ACHIEVEMENTS</div>
-        <div class="stat-number">76</div>
-      </div>
+<div class="stat">
+<span>Deaths</span>
+<span>31</span>
+</div>
 
-    </div>
-  </section>
+<div class="stat">
+<span>Rank</span>
+<span>VOID</span>
+</div>
 
-  <section class="section">
-    <h2 class="section-title">⚔️ Features</h2>
+</div>
 
-    <div class="grid">
+</div>
 
-      <div class="card">
-        <h3>❤️ Lifesteal</h3>
-        <p class="muted">
-          Fight, survive and protect your hearts.
-        </p>
-      </div>
 
-      <div class="card">
-        <h3>🏆 Leaderboards</h3>
-        <p class="muted">
-          Compete with the best players.
-        </p>
-      </div>
+<div class="panel" id="leaderboard">
 
-      <div class="card">
-        <h3>📈 Player Stats</h3>
-        <p class="muted">
-          Track kills, deaths and achievements.
-        </p>
-      </div>
+<h2>🏆 Top Players</h2>
 
-      <div class="card">
-        <h3>🌐 Community</h3>
-        <p class="muted">
-          Build, battle and become a legend.
-        </p>
-      </div>
+<div class="player">
+<span><span class="rank">#1</span> Shadow</span>
+<strong>85 ❤️</strong>
+</div>
 
-    </div>
-  </section>
+<div class="player">
+<span><span class="rank">#2</span> VoidKing</span>
+<strong>72 ❤️</strong>
+</div>
 
-</main>
+<div class="player">
+<span><span class="rank">#3</span> Dragon</span>
+<strong>64 ❤️</strong>
+</div>
+
+<div class="player">
+<span><span class="rank">#4</span> Blaze</span>
+<strong>58 ❤️</strong>
+</div>
+
+<div class="player">
+<span><span class="rank">#5</span> Ninja</span>
+<strong>51 ❤️</strong>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<section class="cta" id="community">
+
+<h2>READY TO ENTER THE VOID?</h2>
+
+<p>
+Join the VOID GAMING community and start your journey.
+</p>
+
+<a class="button" href="https://discord.com" target="_blank">
+💬 JOIN DISCORD
+</a>
+
+</section>
+
 
 <footer>
-  <p>© 2026 VOID GAMING • Built for gamers ⚡</p>
-  <p style="margin-top:8px;">Server statistics shown on this demo page are not live.</p>
+
+<p>
+<strong>VOID GAMING</strong>
+</p>
+
+<p class="small">
+Minecraft • Lifesteal • Community • Leaderboards
+</p>
+
+<p class="small">
+© 2026 VOID GAMING. All rights reserved.
+</p>
+
 </footer>
+
+
+<script>
+function showStats(){
+
+const name =
+document.getElementById("playerInput").value.trim();
+
+const result =
+document.getElementById("statsResult");
+
+if(name === ""){
+result.innerHTML =
+"<p class='small'>Please enter a player name.</p>";
+return;
+}
+
+result.innerHTML = `
+<p style="margin-bottom:10px">
+Stats for <strong>${name}</strong>
+</p>
+
+<div class="stat">
+<span>Hearts</span>
+<span>30 ❤️</span>
+</div>
+
+<div class="stat">
+<span>Kills</span>
+<span>245</span>
+</div>
+
+<div class="stat">
+<span>Deaths</span>
+<span>31</span>
+</div>
+
+<div class="stat">
+<span>Rank</span>
+<span>VOID</span>
+</div>
+`;
+}
+</script>
 
 </body>
 </html>
