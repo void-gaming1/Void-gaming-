@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOID GAMING</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #182044 0%, #080b16 45%, #03040a 100%);
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(3,4,10,.75);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #7c5cff;
+    }
+
+    nav a {
+      color: #cbd0e8;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 85px 20px 55px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(124,92,255,.4);
+      border-radius: 30px;
+      color: #b9adff;
+      background: rgba(124,92,255,.1);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 9vw, 85px);
+      font-weight: 1000;
+      letter-spacing: -3px;
+    }
+
+    .hero h1 span {
+      color: #7c5cff;
+      text-shadow: 0 0 30px rgba(124,92,255,.5);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 20px auto;
+      color: #aab0c8;
+      line-height: 1.7;
+    }
+
+    .buttons {
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 5px;
+      background: #7c5cff;
+      color: white;
+      box-shadow: 0 0 25px rgba(124,92,255,.25);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .container {
+      width: 86%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .section {
+      padding: 35px 0;
+    }
+
+    .section-title {
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 17px;
+      padding: 22px;
+      box-shadow: 0 15px 40px rgba(0,0,0,.2);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(124,92,255,.35);
+      transition: .2s;
+    }
+
+    .server {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .online {
+      color: #53e08b;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      background: #53e08b;
+      border-radius: 50%;
+      margin-right: 6px;
+      box-shadow: 0 0 12px #53e08b;
+    }
+
+    .big {
+      font-size: 29px;
+      font-weight: 900;
+      margin-top: 12px;
+    }
+
+    .muted {
+      color: #8f96b0;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .player {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .avatar {
+      width: 43px;
+      height: 43px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg,#7c5cff,#2c9cff);
+      font-weight: 900;
+    }
+
+    .rank {
+      margin-left: auto;
+      color: #a99cff;
+      font-weight: bold;
+    }
+
+    .stat-number {
+      font-size: 34px;
+      font-weight: 900;
+    }
+
+    .lifesteal {
+      background:
+        linear-gradient(135deg, rgba(124,92,255,.17), rgba(20,24,50,.5));
+    }
+
+    .heart {
+      color: #ff4d72;
+    }
+
+    .bar {
+      height: 8px;
+      background: rgba(255,255,255,.08);
+      border-radius: 20px;
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 76%;
+      background: #7c5cff;
+      border-radius: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 45px 20px;
+      color: #737991;
+      font-size: 13px;
+    }
+
+    @media(max-width:600px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">VOID<span>GAMING</span></div>
+
+  <nav>
+    <a href="#server">Server</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#stats">Stats</a>
+    <a href="#lifesteal">Lifesteal</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="badge">⚡ THE ULTIMATE GAMING HUB</div>
+
+  <h1>ENTER THE <span>VOID</span></h1>
+
+  <p>
+    Welcome to VOID GAMING — your home for Minecraft,
+    Lifesteal SMP, leaderboards, player stats and achievements.
+  </p>
+
+  <div class="buttons">
+    <a class="btn" href="#server">🎮 Explore Server</a>
+    <a class="btn secondary" href="#leaderboard">🏆 Leaderboard</a>
+  </div>
+</section>
+
+<main class="container">
+
+  <section class="section" id="server">
+    <h2 class="section-title">🟢 Server Status</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="server">
+          <strong>VOID Lifesteal SMP</strong>
+          <span class="online">
+            <span class="dot"></span>ONLINE
+          </span>
+        </div>
+
+        <div class="big">247 Players</div>
+        <div class="muted">Server status • Demo data</div>
+
+        <div class="bar">
+          <span></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="muted">SERVER IP</div>
+        <div class="big" style="font-size:22px;">
+          play.voidgaming.net
+        </div>
+        <div class="muted">Minecraft Bedrock / Java</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">VERSION</div>
+        <div class="big">1.21+</div>
+        <div class="muted">Survival • PvP • Lifesteal</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="lifesteal">
+    <h2 class="section-title">❤️ Lifesteal SMP</h2>
+
+    <div class="grid">
+
+      <div class="card lifesteal">
+        <div class="muted">YOUR HEARTS</div>
+        <div class="big heart">30 ❤️</div>
+        <div class="muted">Demo player profile</div>
+      </div>
+
+      <div class="card lifesteal">
+        <div class="muted">TOTAL PLAYERS</div>
+        <div class="stat-number">8,492</div>
+        <div class="muted">Players registered</div>
+      </div>
+
+      <div class="card lifesteal">
+        <div class="muted">BATTLES TODAY</div>
+        <div class="stat-number">1,284</div>
+        <div class="muted">PvP battles</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="leaderboard">
+    <h2 class="section-title">🏆 Top Players</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="player">
+          <div class="avatar">1</div>
+          <div>
+            <strong>VoidKing</strong>
+            <div class="muted">2,840 kills</div>
+          </div>
+          <div class="rank">#1</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="player">
+          <div class="avatar">2</div>
+          <div>
+            <strong>ShadowX</strong>
+            <div class="muted">2,431 kills</div>
+          </div>
+          <div class="rank">#2</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="player">
+          <div class="avatar">3</div>
+          <div>
+            <strong>NightWolf</strong>
+            <div class="muted">2,105 kills</div>
+          </div>
+          <div class="rank">#3</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="player">
+          <div class="avatar">4</div>
+          <div>
+            <strong>ProMiner</strong>
+            <div class="muted">1,982 kills</div>
+          </div>
+          <div class="rank">#4</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="stats">
+    <h2 class="section-title">📊 Player Stats</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="muted">TOTAL KILLS</div>
+        <div class="stat-number">2,840</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">DEATHS</div>
+        <div class="stat-number">317</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">K/D RATIO</div>
+        <div class="stat-number">8.96</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">ACHIEVEMENTS</div>
+        <div class="stat-number">76</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">⚔️ Features</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>❤️ Lifesteal</h3>
+        <p class="muted">
+          Fight, survive and protect your hearts.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🏆 Leaderboards</h3>
+        <p class="muted">
+          Compete with the best players.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📈 Player Stats</h3>
+        <p class="muted">
+          Track kills, deaths and achievements.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🌐 Community</h3>
+        <p class="muted">
+          Build, battle and become a legend.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 VOID GAMING • Built for gamers ⚡</p>
+  <p style="margin-top:8px;">Server statistics shown on this demo page are not live.</p>
+</footer>
+
+</body>
+</html>
